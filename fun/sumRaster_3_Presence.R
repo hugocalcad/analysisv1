@@ -23,10 +23,13 @@ sumRaster <- function(listRaster, outRaster){
 
 library(raster)
 library(dplyr)
-# Setting variables (change Amphibians, Birds, Mammals, Reptiles)
-folderSpecies <- "/media/victor/DATA1/GRA2020/SEND_DATA/Geographic_spatial_data_terrestrial_tetrapods_062020_50/Reptiles_geographic_062020/"
-fileList <- "/media/victor/DATA1/GRA2020/SEND_DATA/Geographic_spatial_data_terrestrial_tetrapods_062020_50/List_reptiles_062020.csv"
-folderResults <- "/media/victor/DATA1/GRA2020/SEND_DATA/RESULTS/Reptiles/"
+# Setting variables (change amphibians, birds, mammals, reptiles)
+className <- "reptiles"
+className2 <- stringr::str_to_title(className)
+folderSpecies <- paste0("/media/victor/DATA1/GRA2020/SEND_DATA02/Geographic_spatial_data_terrestrial_tetrapods_082020_50/",className2,"_geographic_082020/")
+fileList <- paste0("/media/victor/DATA1/GRA2020/SEND_DATA02/Geographic_spatial_data_terrestrial_tetrapods_082020_50/List_",className,"_082020.csv")
+folderResults <- paste0("/media/victor/DATA1/GRA2020/SEND_DATA02/RESULTS/",className2,"/")
+dir.create(paste0(folderResults), showWarnings = FALSE, recursive = T)
 # Listing Raster Files
 fs1 <- list.files(path=folderSpecies, pattern = "tif$", full.names = TRUE)
 # Sum all raster for richness
